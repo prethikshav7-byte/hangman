@@ -1,0 +1,10 @@
+python
+hangman
+computer
+science
+project
+internship
+keyboard
+variable
+function
+algorithm

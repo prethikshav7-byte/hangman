@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hangman Pro</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css', v='10') }}" />
+</head>
+<body>
+  <div class="noise"></div>
+  <main class="app-shell">
+    <header class="topbar">
+      <h1>Hangman Pro</h1>
+      <div class="topbar-actions">
+        <span id="user-badge" class="user-badge">Guest</span>
+        <button id="theme-toggle" class="ghost">Toggle Theme</button>
+      </div>
+    </header>
+
+    <section class="grid">
+      <article class="card auth-card">
+        <h2>Account</h2>
+        <div class="auth-forms">
+          <input id="username" type="text" placeholder="username" autocomplete="username" />
+          <input id="password" type="password" placeholder="password" autocomplete="current-password" />
+          <div class="row">
+            <button id="signup-btn">Sign Up</button>
+            <button id="login-btn">Log In</button>
+            <button id="logout-btn" class="ghost">Log Out</button>
+          </div>
+          <p id="auth-status" class="status"></p>
+        </div>
+      </article>
+
+      <article class="card game-card">
+        <div class="game-head">
+          <h2>Game</h2>
+          <div class="row compact">
+            <label>
+              Difficulty
+              <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium" selected>Medium</option>
+                <option value="hard">Hard</option>
+              </select>
+            </label>
+            <label>
+              Category
+              <select id="category"></select>
+            </label>
+            <label>
+              Source
+              <select id="source">
+                <option value="local" selected>Local Wordbank</option>
+                <option value="ai">AI Word</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div id="word-display" class="word-display"></div>
+
+        <div class="stats-row">
+          <span>Attempts Left: <strong id="attempts-left">6</strong></span>
+          <span>Score: <strong id="score">0</strong></span>
+        </div>
+
+        <div class="letters-row">
+          <div><strong>Correct:</strong> <span id="correct-letters">-</span></div>
+          <div><strong>Wrong:</strong> <span id="wrong-letters">-</span></div>
+        </div>
+
+        <div class="row">
+          <button id="new-game-btn">New Game</button>
+          <button id="hint-btn" class="ghost">Hint (-2)</button>
+          <button id="ai-hint-btn" class="ghost">AI Hint</button>
+        </div>
+
+        <div id="keyboard" class="keyboard"></div>
+        <p id="game-status" class="status"></p>
+      </article>
+
+      <article class="card leaderboard-card">
+        <h2>Leaderboard</h2>
+        <ol id="leaderboard-list"></ol>
+      </article>
+
+      <article class="card multiplayer-card">
+        <h2>Multiplayer (WebSocket)</h2>
+        <div class="row compact">
+          <input id="room-code" type="text" placeholder="Room code" />
+          <button id="create-room-btn">Create Room</button>
+          <button id="join-room-btn" class="ghost">Join Room</button>
+        </div>
+        <div class="row compact">
+          <input id="room-word" type="text" placeholder="Host: set secret word" />
+          <button id="set-room-word-btn">Set Word</button>
+        </div>
+        <p id="room-status" class="status"></p>
+      </article>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js', v='10') }}"></script>
+</body>
+</html>
